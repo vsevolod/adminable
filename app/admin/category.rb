@@ -1,4 +1,4 @@
-Adminable::ActiveAdmin.register Adminable::Category do
+ActiveAdmin.register Adminable::Category do
 
   sortable tree: true
 

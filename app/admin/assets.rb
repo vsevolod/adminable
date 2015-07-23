@@ -1,3 +1,3 @@
-ActiveAdmin.register Adminable::Asset do
+ActiveAdmin.register Asset do
   menu false
 end

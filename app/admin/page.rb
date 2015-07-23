@@ -1,4 +1,4 @@
-Adminable::ActiveAdmin.register Adminable::Page do
+ActiveAdmin.register Adminable::Page do
 
   sortable tree: true
 

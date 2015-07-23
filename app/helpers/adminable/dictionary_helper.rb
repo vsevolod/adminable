@@ -1,12 +1,12 @@
 module Adminable
   module DictionaryHelper
 
-    def dictionary_fields(f, fields = Dictionary.fields)
+    def dictionary_fields(f, fields = Adminable::Dictionary.fields)
       get_fields_array(f, fields).join('').html_safe
     end
 
     # count: Количество столбцов, на которые надо разделить поля
-    def splitted_dictionary_fields(f, count, fields = Dictionary.fields, &block)
+    def splitted_dictionary_fields(f, count, fields = Adminable::Dictionary.fields, &block)
       fields_array = get_fields_array(f, fields)
       fields_array.each_slice((fields_array.size*1.0/count).ceil).each_with_index do |sub_fields, index|
         block.call(sub_fields.join('').html_safe, index)

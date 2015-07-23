@@ -1,3 +1,3 @@
 Adminable::Engine.routes.draw do
-  Adminable::ActiveAdmin.routes(self)
+  ActiveAdmin.routes(self)
 end

@@ -1,4 +1,4 @@
-Adminable::ActiveAdmin.register Adminable::Item do
+ActiveAdmin.register Adminable::Item do
 
   form do |f|
 

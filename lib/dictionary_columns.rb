@@ -1,4 +1,4 @@
-# Удалить: Dictionary.update_all('data = delete("data", \'available\')') http://blog.yannick.io/rails/2013/08/02/rails-4-active-record-hstore.html
+# Удалить: Adminable::Dictionary.update_all('data = delete("data", \'available\')') http://blog.yannick.io/rails/2013/08/02/rails-4-active-record-hstore.html
 module DictionaryColumns
 
   def self.included(base)
@@ -18,8 +18,9 @@ module DictionaryColumns
     end
 
     def add_columns(tag = nil, &block)
+      return unless ActiveRecord::Base.connection.table_exists? 'adminable_dictionaries'
       tag ||= self.model_name.collection.sub('/','_')
-      fields_field = Dictionary.find_by_tag(tag.to_s)
+      fields_field = Adminable::Dictionary.find_by_tag(tag.to_s)
       fields = if fields_field
                  if block
                    block.call(fields_field)
@@ -33,6 +34,7 @@ module DictionaryColumns
     end
 
     def add_store_accessor(hstore_column = :data)
+      return unless ActiveRecord::Base.connection.table_exists? 'adminable_dictionaries'
       self.hstore_column = hstore_column
       self.store_accessor self.hstore_column, self.fields.map(&:value)
 
@@ -51,7 +53,7 @@ module DictionaryColumns
               if field.variable_type.try(:value) == 'collection'
                 field.reference_id.capitalize.constantize
               else
-                Dictionary
+                Adminable::Dictionary
               end.where(id: array)
             else
               array
@@ -75,7 +77,7 @@ module DictionaryColumns
             collection_model = if field.value != 'variable_type' && field.variable_type.try(:value) == 'collection'
                                  field.reference_id.titleize.constantize
                                else
-                                 Dictionary
+                                 Adminable::Dictionary
                                end
             collection_model.find_by_id(read_store_attribute(self.class.hstore_column, field.value).to_s)
           end
@@ -88,7 +90,7 @@ module DictionaryColumns
         # Если значение содержит поле тип
         elsif field.variable_type.present?
           # Следующая строка магическая. Без неё всё сломается
-          variable_type = field.variable_type.is_a?(String) ? Dictionary.find(field.variable_type) : field.variable_type
+          variable_type = field.variable_type.is_a?(String) ? Adminable::Dictionary.find(field.variable_type) : field.variable_type
           case variable_type.value
           when 'float'
             self.redefine_method field.value.to_sym do

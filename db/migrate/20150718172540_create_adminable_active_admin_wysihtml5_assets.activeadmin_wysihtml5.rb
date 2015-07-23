@@ -2,7 +2,7 @@
 class CreateAdminableActiveAdminWysihtml5Assets < ActiveRecord::Migration
 
   def change
-    create_table :adminable_assets do |t|
+    create_table :assets do |t|
       t.string :storage_uid
       t.string :storage_name
       t.timestamps

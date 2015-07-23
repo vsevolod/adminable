@@ -1,4 +1,4 @@
-Adminable::ActiveAdmin.register Adminable::Dictionary do
+ActiveAdmin.register Adminable::Dictionary do
 
   sortable tree: true
 
