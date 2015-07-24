@@ -37,6 +37,12 @@ PATH
   remote: .
   specs:
     adminable (0.0.1)
+      ancestry
+      draper
+      paperclip
+      paperclip-ffmpeg
+      pg
+      rails (~> 4.2.3)
 
 GEM
   remote: https://rubygems.org/

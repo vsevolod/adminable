@@ -1,3 +1,13 @@
 = Adminable
 
+* Add this to your Gemfile:
+
+  gem 'activeadmin', github: 'activeadmin'
+  gem 'active_admin-sortable_tree'
+  gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
+  gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
+
+* add routes to config/routes.rb:
+  mount Adminable::Engine => 'admin'
+
 This project rocks and uses MIT-LICENSE.

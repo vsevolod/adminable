@@ -17,16 +17,16 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
-  #s.add_dependency "rails", "~> 4.2.3"
+  s.add_dependency "rails", "~> 4.2.3"
+  s.add_dependency 'draper'
+  s.add_dependency 'ancestry'
+  s.add_dependency 'paperclip'
+  s.add_dependency 'paperclip-ffmpeg'
+  s.add_dependency 'pg'
   #s.add_dependency 'activeadmin'
-  #s.add_dependency 'draper'
-  #s.add_dependency 'ancestry'
   #s.add_dependency 'active_admin-sortable_tree'
-  #s.add_dependency 'paperclip'
-  #s.add_dependency 'paperclip-ffmpeg'
-  ##s.add_dependency 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
-  ##s.add_dependency 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
+  #s.add_dependency 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
+  #s.add_dependency 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 
-  #s.add_development_dependency "pg"
-  #s.add_development_dependency 'pry'
+  s.add_development_dependency 'pry'
 end
