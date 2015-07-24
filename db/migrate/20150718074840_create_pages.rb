@@ -1,6 +1,6 @@
-class CreateAdminablePages < ActiveRecord::Migration
+class CreatePages < ActiveRecord::Migration
   def change
-    create_table :adminable_pages do |t|
+    create_table :pages do |t|
       t.string :name
       t.string :title
       t.string :tag
@@ -13,6 +13,6 @@ class CreateAdminablePages < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_index :adminable_pages, :ancestry
+    add_index :pages, :ancestry
   end
 end

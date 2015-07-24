@@ -1,6 +1,6 @@
-class CreateAdminableCategories < ActiveRecord::Migration
+class CreateCategories < ActiveRecord::Migration
   def change
-    create_table :adminable_categories do |t|
+    create_table :categories do |t|
       t.string :name
       t.hstore :data
       t.string :ancestry
@@ -8,6 +8,6 @@ class CreateAdminableCategories < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_attachment :adminable_categories, :photo
+    add_attachment :categories, :photo
   end
 end

@@ -1,5 +1,5 @@
 class AddPositionToPages < ActiveRecord::Migration
   def change
-    add_column :adminable_pages, :position, :integer
+    add_column :pages, :position, :integer
   end
 end

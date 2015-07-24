@@ -1,6 +1,6 @@
-class CreateAdminableDictionaries < ActiveRecord::Migration
+class CreateDictionaries < ActiveRecord::Migration
   def change
-    create_table :adminable_dictionaries do |t|
+    create_table :dictionaries do |t|
       t.string  :name
       t.string  :value
       t.string  :tag

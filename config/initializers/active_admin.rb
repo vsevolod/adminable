@@ -33,15 +33,16 @@ ActiveAdmin.setup do |config|
   #   config.default_namespace = false
   #
   # Default:
-  config.default_namespace = false
+  config.default_namespace = :admin
   #
   # You can customize the settings for each namespace by using
   # a namespace block. For example, to change the site title
   # within a namespace:
   #
-  #   config.namespace :admin do |admin|
-  #     admin.site_title = "Custom Admin Title"
-  #   end
+  ##config.namespace false do |admin|
+  ##  admin.site_title = "Панель администратора"
+  ##  admin.site_title_link = "/adminable"
+  ##end
   #
   # This will ONLY change the title for the admin section. Other
   # namespaces will continue to use the main "site_title" configuration.

@@ -1,4 +1,4 @@
-class Adminable::GalleryObject < ActiveRecord::Base
+class GalleryObject < ActiveRecord::Base
   belongs_to :gallery
 
   #mount_uploader :photo, PhotoImageUploader, mount_on: :photo_image_filename

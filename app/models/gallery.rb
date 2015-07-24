@@ -2,7 +2,7 @@
 #   name: string
 #   enabled: boolean
 #   page_id: integer
-class Adminable::Gallery < ActiveRecord::Base
+class Gallery < ActiveRecord::Base
   belongs_to :galleryable, polymorphic: true
   has_many :gallery_objects, dependent: :destroy
 

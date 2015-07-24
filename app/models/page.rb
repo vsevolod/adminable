@@ -8,7 +8,7 @@
 # options: json
 #   keywords: string
 #   description: string
-class Adminable::Page < ActiveRecord::Base
+class Page < ActiveRecord::Base
 
   has_ancestry
   has_many :galleries, as: :galleryable, dependent: :destroy

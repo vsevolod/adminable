@@ -8,6 +8,11 @@
   gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 
 * add routes to config/routes.rb:
+  ActiveAdmin.routes(self)
   mount Adminable::Engine => 'admin'
+
+* copy and run migrations:
+  rake adminable_engine:install:migrations
+  rake db:migrate
 
 This project rocks and uses MIT-LICENSE.

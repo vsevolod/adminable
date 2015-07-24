@@ -1,8 +1,8 @@
-class CreateAdminableBanners < ActiveRecord::Migration
+class CreateBanners < ActiveRecord::Migration
 
   def self.up
     execute "CREATE EXTENSION IF NOT EXISTS hstore"
-    create_table :adminable_banners do |t|
+    create_table :banners do |t|
       t.integer :position
       t.string :banner_type
       t.hstore :data
@@ -12,11 +12,11 @@ class CreateAdminableBanners < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_attachment :adminable_banners, :photo
+    add_attachment :banners, :photo
   end
 
   def self.down
-    drop_table :adminable_banners
+    drop_table :banners
     execute "DROP EXTENSION IF EXISTS hstore"
   end
 end

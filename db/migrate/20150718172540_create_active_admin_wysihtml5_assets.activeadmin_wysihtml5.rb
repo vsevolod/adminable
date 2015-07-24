@@ -1,5 +1,5 @@
 # This migration comes from activeadmin_wysihtml5 (originally 20120816182611)
-class CreateAdminableActiveAdminWysihtml5Assets < ActiveRecord::Migration
+class CreateActiveAdminWysihtml5Assets < ActiveRecord::Migration
 
   def change
     create_table :assets do |t|

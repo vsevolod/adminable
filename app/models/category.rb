@@ -4,7 +4,7 @@
 #   ancestry: string
 #   position: integer
 #   photo: asset
-class Adminable::Category < ActiveRecord::Base
+class Category < ActiveRecord::Base
   has_ancestry
   include DictionaryColumns
 

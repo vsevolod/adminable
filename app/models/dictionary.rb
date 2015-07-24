@@ -6,19 +6,19 @@
 #   ancestry_depth: integer
 #   data: hstore
 #   available: boolean
-class Adminable::Dictionary < ActiveRecord::Base
+class Dictionary < ActiveRecord::Base
 
   has_ancestry cache_depth: true
   def self.[](tag)
     case tag.to_s
     when ''                 then self.where('TRUE = FALSE')
     else
-      Adminable::Dictionary.find_by_tag(tag.to_s).try(:children)
+      Dictionary.find_by_tag(tag.to_s).try(:children)
     end
   end
 
   scope :by_priority, lambda{ order("position") }
-  include Adminable::DictionaryColumns
+  include DictionaryColumns
 
   add_columns(:dictionary_fields)
   add_store_accessor
@@ -30,7 +30,7 @@ class Adminable::Dictionary < ActiveRecord::Base
   def get_select_dictionary_children
     model = self.variable_type.try(:value) == 'collection' ? self.reference_id : 'Dictionary'
     select_tag_text = self.select_tag.blank? ? self.select_tag_array : self.select_tag
-    model == 'Adminable::Dictionary' ? model.constantize[select_tag_text] : model.capitalize.constantize.scoped
+    model == 'Dictionary' ? model.constantize[select_tag_text] : model.capitalize.constantize.scoped
   end
 
   # Возвращает коллекцию значений для записи
