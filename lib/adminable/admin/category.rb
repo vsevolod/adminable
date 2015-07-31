@@ -20,6 +20,9 @@ ActiveAdmin.register Category do
       f.input :parent_id, :as => :select, :collection => nested_dropdown(Category.arrange)
       f.input :photo, as: :file, hint: (f.object.photo.blank? ? '' : f.template.image_tag(f.object.photo.url(:thumb)))
     end
+    f.inputs 'Дополнительно' do
+      show_fields_for(f)
+    end
     f.actions
 
   end
@@ -54,7 +57,7 @@ ActiveAdmin.register Category do
         :name,
         :parent_id,
         :photo
-      ]) || {})[:category]
+      ] | Category.fields.map(&:value)) || {})[:category]
     end
 
   end

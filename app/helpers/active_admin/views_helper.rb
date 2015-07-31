@@ -1,5 +1,9 @@
 module ActiveAdmin::ViewsHelper
 
+  def show_fields_for(f)
+    dictionary_fields(f, f.object.class.fields)
+  end
+
   def nested_dropdown(items)
     result = []
     items.map do |item, sub_items|
@@ -12,6 +16,7 @@ module ActiveAdmin::ViewsHelper
   def galleries_for(f)
     f.inputs 'Галереи' do
       f.has_many :galleries, new_record: true, allow_destroy: true, heading: false do |gallery|
+        gallery.input :name
         gallery.has_many :gallery_objects, new_record: true, allow_destroy: true, heading: false do |go|
           [:photo, :video].each do |m|
             next if m == :video #TODO Temprorary remoed video

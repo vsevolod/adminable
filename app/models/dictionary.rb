@@ -19,6 +19,7 @@ class Dictionary < ActiveRecord::Base
 
   scope :by_priority, lambda{ order("position") }
   include DictionaryColumns
+  belongs_to :variable_type, class_name: 'Dictionary'
 
   add_columns(:dictionary_fields)
   add_store_accessor

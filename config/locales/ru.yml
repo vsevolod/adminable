@@ -1,0 +1,92 @@
+ru:
+  activerecord:
+    models:
+      category:
+        one: Категория
+        few: Категории
+        many: Категорий
+        other: Категории
+      dictionary:
+        one: Словарь
+        few: Словари
+        many: Словарей
+        other: Словари
+      gallery:
+        one: Галерея
+        few: Галереи
+        many: Галерей
+        other: Список галерей
+      gallery_object:
+        one: Объект
+        few: Объекты
+        many: Объектов
+        other: Объекты
+      item:
+        one: Товар
+        few: Товары
+        many: Товаров
+        other: Товары
+      page:
+        one: Страница
+        few: Страницы
+        many: Страниц
+        other: Страницы
+    attributes:
+      category:
+        name: Название
+        position: Позиция
+        photo: Картинка
+        parent: Предок
+        parent_id: Предок
+      dictionary:
+        name: Название
+        value: Значение
+        tag: Тэг
+        ancestry: Предок
+        ancestry_depth: Глубина
+        data: Данные
+        available: Доступен
+        parent: Предок
+        parent_id: Предок
+        position: Позиция
+        variable_type: Тип поля
+        variable_type_id: Тип поля
+      gallery:
+        name: Название
+        enabled: Активна
+        page_id: Страница
+        gallery_object: Объект
+      gallery_object:
+        photo: Фото
+        video: Видео
+      item:
+        available: Доступен
+        cost: Стоимость
+        currency: Валюта
+        currency_id: Валюта
+        category: Категория
+        category_id: Категория
+        name: Название
+        brand: Брэнд
+        brand_id: Брэнд
+        description: Описание
+      page:
+        name: Название
+        tag: Тэг
+        title: Заголовок
+        available: Активна
+        content: Содержание
+        url: Ссылка
+        options: Свойства
+        parent: Предок
+        parent_id: Предок
+        galleries: Галереи
+
+  time:
+    formats:
+      long: "%d.%m.%Y %I:%M:%S"
+      short_ref: "%d.%m.%Y %I:%M"
+  date:
+    formats:
+      day_names: [Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье]
+      abbr_day_names: [Пн, Вт, Ср, Чт, Пт, Сб, Вс]

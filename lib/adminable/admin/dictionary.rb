@@ -7,7 +7,13 @@ ActiveAdmin.register Dictionary do
   end
 
   index :as => :sortable do
-    label :name # item content
+    label do |d|
+      res = d.name
+      if d.tag.present?
+        res += " (#{d.tag})"
+      end
+      res
+    end
     actions do |d|
       link_to "Добавить в", new_admin_dictionary_path(dictionary: {parent_id: d.id} )
     end
@@ -20,7 +26,11 @@ ActiveAdmin.register Dictionary do
       f.input :name
       f.input :tag
       f.input :value
-      f.input :parent_id, :as => :select, :collection => nested_dropdown(Dictionary.arrange)
+      f.input :parent_id, as: :select, :collection => nested_dropdown(Dictionary.arrange)
+    end
+    f.inputs 'Дополнительно' do
+      f.input :variable_type_id, as: :select, collection: Dictionary[:column_types]
+      show_fields_for(f)
     end
     f.actions
 
@@ -57,8 +67,9 @@ ActiveAdmin.register Dictionary do
         :value,
         :tag,
         :available,
-        :parent_id
-      ]) || {})[:dictionary]
+        :parent_id,
+        :variable_type_id
+      ] | Dictionary.fields.map(&:value)) || {})[:dictionary]
     end
 
   end
