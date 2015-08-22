@@ -1,17 +1,6 @@
-ActiveAdmin.register Page do
+ActiveAdmin.register Banner do
 
   sortable tree: true
-
-  action_item :view, only: :show do
-    link_to 'Добавить в', new_admin_page_path(page: {parent_id: page.id})
-  end
-
-  index :as => :sortable do
-    label :name # item content
-    actions do |d|
-      link_to "Добавить в", new_admin_page_path(page: {parent_id: d.id} )
-    end
-  end
 
   show do
     attributes_table do

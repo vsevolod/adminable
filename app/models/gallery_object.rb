@@ -4,6 +4,8 @@ class GalleryObject < ActiveRecord::Base
   #mount_uploader :photo, PhotoImageUploader, mount_on: :photo_image_filename
   has_attached_file :photo, :styles => { :medium => "300x300>",
                                          :thumb => "100x100>",
+                                         :item_show => "553x484>",
+                                         :item_down_show => "137x130#",
                                          :item => "356x390",
                                          #:gallery => { :geometry => "800x600>",
                                          #              :watermark_path => Proc.new{|p| "#{Rails.root}/app/assets/images/watermark-#{p.instance.organization.domain}.png"},

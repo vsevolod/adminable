@@ -1,6 +1,11 @@
 ru:
   activerecord:
     models:
+      banner:
+        one: Баннер
+        few: Баннеры
+        many: Баннеров
+        other: Баннеры
       category:
         one: Категория
         few: Категории

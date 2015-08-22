@@ -1,5 +1,22 @@
 ActiveAdmin.register Item do
 
+  index do
+    column :id
+    column :cost
+    column :currency do |item|
+      item.currency.try(:name)
+    end
+    column :category do |item|
+      if item.category
+        link_to item.category.try(:name), [:admin, item.category]
+      end
+    end
+    column :brand do |item|
+      item.brand.try(:name)
+    end
+    actions
+  end
+
   form do |f|
 
     f.inputs 'Основное' do
