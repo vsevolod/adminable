@@ -37,6 +37,12 @@ ru:
         many: Страниц
         other: Страницы
     attributes:
+      banner:
+        available: Активен
+        banner_type: Тип баннера
+        url: Ссылка
+        photo: Фотография
+        position: Позиция
       category:
         name: Название
         position: Позиция

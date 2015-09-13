@@ -11,7 +11,7 @@ class Dictionary < ActiveRecord::Base
   has_ancestry cache_depth: true
   def self.[](tag)
     case tag.to_s
-    when ''                 then self.where('TRUE = FALSE')
+    when '' then self.where('TRUE = FALSE')
     else
       Dictionary.find_by_tag(tag.to_s).try(:children)
     end

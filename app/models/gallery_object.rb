@@ -13,7 +13,8 @@ class GalleryObject < ActiveRecord::Base
                                          #              :processors => [:watermark]
                                          #            },
                                          :carousel_gallery => "640x360#",
-                                         :gallery => "376x288#"
+                                         :gallery => "376x288#",
+                                         :gallery_list => "x567"
                                        },
                             :convert_options => { :thumb => "-quality 75 -strip" }
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
@@ -25,12 +26,27 @@ class GalleryObject < ActiveRecord::Base
       streaming: true,
       convert_options: { output: {vcodec: 'libx264', acodec: 'libfaac'}}
     },
-    main: { geometry: '640x', format: 'jpg', time: 10 },
-    thumb: {geometry: '100x100>', format: 'jpg', time: 10},
-    small: { geometry: '210x120!', format: 'jpg', time: 10 }
+    main: { geometry: '640x', format: 'jpg', time: 10},
+    thumb: {geometry: '100x100>', format: 'jpg', time: 10}
+    #small: { geometry: '210x120!', format: 'jpg', time: 10},
+    #medium: {format: 'jpg', geometry: "300x300>", time: 10},
+    #item_show: {format: 'jpg', geometry: "553x484>", time: 10},
+    #item_down_show: {format: 'jpg', geometry: "137x130#", time: 10},
+    #item: {format: 'jpg', geometry: "356x390", time: 10},
+    #carousel_gallery: {format: 'jpg', geometry: "640x360#", time: 10},
+    #gallery: {format: 'jpg', geometry: "376x288#", time: 10},
+    #gallery_list: {format: 'jpg', geometry: "x567", time: 10}
   },
   path: "public/system/videos/videos/:style/:filename",
   url: "/system/videos/videos/:style/:basename.:extension",
   processors: [:ffmpeg, :qtfaststart], max_size: 350.megabytes
+
+  def object
+    self.photo.present? ? self.photo : self.video
+  end
+
+  def get_photo_url(photo_thumb_name = nil, video_thumb_name = nil)
+    self.photo.present? ? self.photo.url(photo_thumb_name) : self.video.url(video_thumb_name)
+  end
 
 end

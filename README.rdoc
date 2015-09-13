@@ -11,6 +11,9 @@
   ActiveAdmin.routes(self)
   mount Adminable::Engine => 'admin'
 
+* install simple form
+  rails generate simple_form:install
+
 * copy and run migrations:
   rake admin:install:migrations
   rake db:migrate

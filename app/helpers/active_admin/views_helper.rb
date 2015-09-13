@@ -19,7 +19,7 @@ module ActiveAdmin::ViewsHelper
         gallery.input :name
         gallery.has_many :gallery_objects, new_record: true, allow_destroy: true, heading: false do |go|
           [:photo, :video].each do |m|
-            next if m == :video #TODO Temprorary remoed video
+            #next if m == :video #TODO Temprorary remoed video
             go.input m, as: :file, hint: (go.object.send(m).blank? ? '' : go.template.image_tag(go.object.send(m).url(:thumb)))
           end
         end

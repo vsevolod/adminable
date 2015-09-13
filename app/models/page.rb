@@ -4,6 +4,7 @@
 # tag :string
 # content: text
 # url: string
+# data: hstore
 # ancestry (parent): string
 # options: json
 #   keywords: string
@@ -25,6 +26,10 @@ class Page < ActiveRecord::Base
   end
 
   scope :available, ->{ where(available: true) }
+
+  include DictionaryColumns
+  add_columns(:page_fields)
+  add_store_accessor
 
   def to_param
     if self.title

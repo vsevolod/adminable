@@ -7,7 +7,11 @@ ActiveAdmin.register Page do
   end
 
   index :as => :sortable do
-    label :name # item content
+    label do |d|
+      s = d.name
+      s += " (#{d.tag})" if d.tag.present?
+      s
+    end # item content
     actions do |d|
       link_to "Добавить в", new_admin_page_path(page: {parent_id: d.id} )
     end
@@ -59,7 +63,10 @@ ActiveAdmin.register Page do
       f.input :tag
       f.input :parent_id, :as => :select, :collection => nested_dropdown(Page.arrange)
       f.input :content, as: :wysihtml5
-      f.input :options, as: :text, input_html: {class: 'jsoneditor-target'}
+      #f.input :options, as: :text, input_html: {class: 'jsoneditor-target'}
+    end
+    f.inputs 'Дополнительно' do
+      show_fields_for(f)
     end
     galleries_for(f)
     f.actions
@@ -99,7 +106,7 @@ ActiveAdmin.register Page do
           { gallery_objects_attributes:  [:video, :photo, :_destroy, :id] },
           :id
         ]
-      ]) || {})[:page]
+      ] | Page.fields.map(&:value)) || {})[:page]
     end
 
   end
