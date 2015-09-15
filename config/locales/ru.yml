@@ -6,6 +6,11 @@ ru:
         few: Баннеры
         many: Баннеров
         other: Баннеры
+      blog:
+        one: Пост
+        few: Блог
+        many: Блог
+        other: Блог
       category:
         one: Категория
         few: Категории
@@ -43,6 +48,11 @@ ru:
         url: Ссылка
         photo: Фотография
         position: Позиция
+      blog:
+        available: Активен
+        title: Заголовок
+        published_at: Дата публикации
+        content: Содержание
       category:
         name: Название
         position: Позиция
