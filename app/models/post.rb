@@ -1,4 +1,8 @@
 class Post < ActiveRecord::Base
+  include DictionaryColumns
+
+  add_columns(:post_fields)
+  add_store_accessor
   has_many :galleries, as: :galleryable, dependent: :destroy
   accepts_nested_attributes_for :galleries, allow_destroy: true
 

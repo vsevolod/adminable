@@ -6,7 +6,7 @@ ru:
         few: Баннеры
         many: Баннеров
         other: Баннеры
-      blog:
+      post:
         one: Пост
         few: Блог
         many: Блог
@@ -48,7 +48,10 @@ ru:
         url: Ссылка
         photo: Фотография
         position: Позиция
-      blog:
+        object: Привязанный объект
+        object_id: Привязанный объект
+        object_type: Тип объекта
+      post:
         available: Активен
         title: Заголовок
         published_at: Дата публикации
@@ -93,6 +96,7 @@ ru:
         description: Описание
       page:
         name: Название
+        banner_id: Баннер
         tag: Тэг
         title: Заголовок
         available: Активна

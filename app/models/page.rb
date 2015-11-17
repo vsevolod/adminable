@@ -13,8 +13,10 @@ class Page < ActiveRecord::Base
 
   has_ancestry cache_depth: true
   has_many :galleries, as: :galleryable, dependent: :destroy
+  has_many :banners, as: :object, dependent: :destroy
 
   accepts_nested_attributes_for :galleries, allow_destroy: true
+  accepts_nested_attributes_for :banners, allow_destroy: true
 
   def self.[](tag)
     page = self.find_by_tag(tag.to_s)

@@ -3,6 +3,13 @@ ActiveAdmin.register Post do
   sortable tree: true
 
   index do
+    column '' do |p|
+      if p.is_a_project
+        content_tag :span, 'Проект', class: 'status_tag yes'
+      else
+        content_tag :span, 'Блог', class: 'status_tag no'
+      end
+    end
     column :id
     column :title
     column :available
@@ -55,6 +62,9 @@ ActiveAdmin.register Post do
       f.input :content, as: :wysihtml5
       f.input :published_at
     end
+    f.inputs 'Дополнительно' do
+      show_fields_for(f)
+    end
     galleries_for(f)
     f.actions
   end
@@ -91,7 +101,7 @@ ActiveAdmin.register Post do
           { gallery_objects_attributes:  [:video, :photo, :_destroy, :id] },
           :id
         ]
-      ]) || {})[:post]
+      ] | Post.fields.map(&:value)) || {})[:post]
     end
   end
 

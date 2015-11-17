@@ -7,4 +7,8 @@ class Gallery < ActiveRecord::Base
   has_many :gallery_objects, dependent: :destroy
 
   accepts_nested_attributes_for :gallery_objects, allow_destroy: true
+
+  def gallery_object
+    gallery_objects.first
+  end
 end

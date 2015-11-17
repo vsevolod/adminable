@@ -2,6 +2,25 @@ ActiveAdmin.register Banner do
 
   sortable tree: true
 
+  index do
+    column :id
+    column :banner_type do |banner|
+      s = Dictionary.find_by_tag(banner.banner_type).try(:name)
+      if banner.object
+        s += " " + banner.object.try(:name)
+      end
+      s
+    end
+    column :available
+    column :url
+    column :photo do |banner|
+      if banner.photo?
+        image_tag banner.photo.url(:thumb)
+      end
+    end
+    actions
+  end
+
   show do
     attributes_table do
       row :banner_type
@@ -29,6 +48,11 @@ ActiveAdmin.register Banner do
       f.input :banner_type, as: :select, collection: Dictionary[:banners_lists].map{|d| [d.name, d.tag]}
       f.input :url
       f.input :photo, as: :file, hint: (f.object.photo.blank? ? '' : f.template.image_tag(f.object.photo.url(:thumb)))
+    end
+    f.inputs 'Дополнительно' do
+      f.input :object_type, as: :select, :collection => [['Страница', 'Page']]
+      f.input :object_id, as: :select, :collection => nested_dropdown(Page.arrange)
+      show_fields_for(f)
     end
     f.actions
   end
@@ -60,8 +84,8 @@ ActiveAdmin.register Banner do
 
     def permitted_params
       (params.permit(banner: [
-        :available, :banner_type, :url, :photo
-      ]) || {})[:banner]
+        :available, :banner_type, :url, :photo, :object_id, :object_type
+      ] | Banner.fields.map(&:value)) || {})[:banner]
     end
 
   end

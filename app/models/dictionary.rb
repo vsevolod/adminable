@@ -39,4 +39,8 @@ class Dictionary < ActiveRecord::Base
     get_select_dictionary_children.map{|d| self.reference_id.present? ? [d.name, d.id] : d.name}
   end
 
+  def self.by_tag(current_tag)
+    self.find_by_tag(current_tag)
+  end
+
 end

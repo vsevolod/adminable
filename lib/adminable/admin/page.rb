@@ -66,6 +66,9 @@ ActiveAdmin.register Page do
       #f.input :options, as: :text, input_html: {class: 'jsoneditor-target'}
     end
     f.inputs 'Дополнительно' do
+      #f.has_many :banners, new_record: true, allow_destroy: true, heading: false do |b|
+      #  f.input :banner, as: :radio, collection: Banner.where(object_id: nil, available: true, banner_type: 'page_type').order('created_at DESC').map{|b| ["<img src=\"#{b.photo.url(:thumb)}\">".html_safe, b.id]}
+      #end
       show_fields_for(f)
     end
     galleries_for(f)

@@ -6,7 +6,7 @@ class GalleryObject < ActiveRecord::Base
                                          :thumb => "100x100>",
                                          :item_show => "553x484>",
                                          :item_down_show => "137x130#",
-                                         :item => "356x390",
+                                         :item => "356x390#",
                                          #:gallery => { :geometry => "800x600>",
                                          #              :watermark_path => Proc.new{|p| "#{Rails.root}/app/assets/images/watermark-#{p.instance.organization.domain}.png"},
                                          #              :position => "Center",
@@ -42,7 +42,7 @@ class GalleryObject < ActiveRecord::Base
   processors: [:ffmpeg, :qtfaststart], max_size: 350.megabytes
 
   def object
-    self.photo.present? ? self.photo : self.video
+    self.video.present? ? self.video : self.photo
   end
 
   def get_photo_url(photo_thumb_name = nil, video_thumb_name = nil)
