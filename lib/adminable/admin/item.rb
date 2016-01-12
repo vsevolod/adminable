@@ -1,12 +1,9 @@
-if defined? Item
+if ActiveRecord::Base.connection.table_exists?('items')
   ActiveAdmin.register Item do
 
     index do
       column :id
-      column :cost
-      column :currency do |item|
-        item.currency.try(:name)
-      end
+      column :name
       column :category do |item|
         if item.category
           link_to item.category.try(:name), [:admin, item.category]

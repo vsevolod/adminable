@@ -14,6 +14,7 @@ class Category < ActiveRecord::Base
   validates :name, presence: true, uniqueness: {scope: [:ancestry]}
 
   has_attached_file :photo, :styles => { :medium => "300x300>",
+                                         :list => '280x326#',
                                          :thumb => "100x100>" }
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
