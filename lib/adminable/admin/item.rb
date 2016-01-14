@@ -58,6 +58,7 @@ if ActiveRecord::Base.connection.table_exists?('items')
           :category_id,
           :brand_id,
           :description,
+          :text,
           accessory_ids: [],
           similar_ids: [],
           galleries_attributes: [
