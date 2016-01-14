@@ -24,6 +24,7 @@ if ActiveRecord::Base.connection.table_exists?('items')
         f.input :currency_id, as: :select, collection: Dictionary[:currencies]
         f.input :category_id, as: :select, :collection => nested_dropdown(Category.arrange)
         f.input :brand_id, as: :select, collection: Dictionary[:brands]
+        f.input :text, as: :wysihtml5
         f.input :description, as: :wysihtml5
       end
       #f.has_many :accessory_items, new_record: true,  allow_destroy: true do |ai|
@@ -33,7 +34,7 @@ if ActiveRecord::Base.connection.table_exists?('items')
       #  end
       #end
       f.inputs "Отношения" do
-        item_list = Item.joins(:category).order('categories.name, items.name').map{|i| ["#{i.category.name}: #{i.name} (#{link_to 'просмотр', [:edit, :admin, i], target: :blank})".html_safe, i.id]}
+        item_list = Item.joins(:category).where.not(id: f.object.id).order('categories.name, items.name').map{|i| ["#{i.category.name}: #{i.name} (#{link_to 'просмотр', [:edit, :admin, i], target: :blank})".html_safe, i.id]}
         div class: 'two_col' do
           f.input :accessory_ids, as: :check_boxes, collection: item_list
         end

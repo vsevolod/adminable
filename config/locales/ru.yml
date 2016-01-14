@@ -95,7 +95,8 @@ ru:
         name: Название
         brand: Брэнд
         brand_id: Брэнд
-        description: Описание
+        description: Характеристики
+        text: Описание
       page:
         name: Название
         banner_id: Баннер
