@@ -34,3 +34,14 @@
     width: 80%;
 }
 @import "jsoneditor";
+
+.two_col {
+  width: 50%;
+  float: left;
+  li {
+    padding: 0;
+    label {
+      width: 100%;
+    }
+  }
+}

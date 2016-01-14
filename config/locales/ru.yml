@@ -84,6 +84,8 @@ ru:
         photo: Фото
         video: Видео
       item:
+        accessory_ids: Аксессуары
+        similar_ids: Компоненты
         available: Доступен
         cost: Стоимость
         currency: Валюта
