@@ -28,13 +28,16 @@ if ActiveRecord::Base.connection.table_exists?('items')
         f.input :description, as: :wysihtml5
       end
       f.inputs "Отношения" do
-        item_list = Item.joins(:category).where.not(id: f.object.id).order('categories.name, items.name').map{|i| ["#{i.category.name}: #{i.name} (#{link_to 'просмотр', [:edit, :admin, i], target: :blank})".html_safe, i.id]}
-        div class: 'two_col' do
-          f.input :accessory_ids, as: :check_boxes, collection: item_list
+        div id: "as_items" do
+
         end
-        div class: 'two_col' do
-          f.input :similar_ids, as: :check_boxes, collection: item_list
-        end
+        #item_list = Item.joins(:category).where.not(id: f.object.id).order('categories.name, items.name').map{|i| ["#{i.category.name}: #{i.name} (#{link_to 'просмотр', [:edit, :admin, i], target: :blank})".html_safe, i.id]}
+        #div class: 'two_col', id: 'accessories_items' do
+        #  f.input :accessory_ids, as: :check_boxes, collection: []
+        #end
+        #div class: 'two_col', id: 'similars_items' do
+        #  f.input :similar_ids, as: :check_boxes, collection: []
+        #end
       end
       f.inputs "Документы" do
         f.has_many :documents, new_record: true,  allow_destroy: true, heading: false do |d|
@@ -45,7 +48,7 @@ if ActiveRecord::Base.connection.table_exists?('items')
       end
       galleries_for(f)
       f.actions
-
+      f.input :id, as: :hidden
     end
 
     controller do

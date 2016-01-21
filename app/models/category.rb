@@ -11,6 +11,10 @@ class Category < ActiveRecord::Base
   add_columns
   add_store_accessor
 
+  if ActiveRecord::Base.connection.table_exists?('items')
+    has_many :items
+  end
+
   validates :name, presence: true, uniqueness: {scope: [:ancestry]}
 
   has_attached_file :photo, styles: { :medium => "300x300>",
