@@ -1,4 +1,4 @@
-if ActiveRecord::Base.connection.table_exists?('items')
+if ActiveRecord::Base.connection.table_exists?('items') && defined?(Item)
   ActiveAdmin.register Item do
 
     index do
