@@ -13,6 +13,7 @@ class GalleryObject < ActiveRecord::Base
                                          #              :processors => [:watermark]
                                          #            },
                                          :carousel_gallery => "640x360#",
+                                         :photo_large => "800x600>",
                                          :gallery => "376x288#",
                                          :gallery_list => "x567"
                                        },
