@@ -7,10 +7,10 @@ ru:
         many: Баннеров
         other: Баннеры
       post:
-        one: Пост
-        few: Блог
-        many: Блог
-        other: Блог
+        one: Статья
+        few: Статьи
+        many: Статьи
+        other: Статьи
       category:
         one: Категория
         few: Категории

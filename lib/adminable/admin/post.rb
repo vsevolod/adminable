@@ -7,7 +7,7 @@ ActiveAdmin.register Post do
       if p.is_a_project
         content_tag :span, 'Проект', class: 'status_tag yes'
       else
-        content_tag :span, 'Блог', class: 'status_tag no'
+        content_tag :span, 'Статья', class: 'status_tag no'
       end
     end
     column :id
