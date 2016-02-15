@@ -10,6 +10,27 @@ update_as_items = ->
   
 
 $( ->
-  $('#item_category_id').on 'change', update_as_items
-  update_as_items()
+  if $('#item_category_id').length > 0
+    $('#item_category_id').on 'change', update_as_items
+    update_as_items()
+
+  $.each($('.sortable'), (index, item) ->
+    $(item).sortable({
+      placeholder: "ui-state-highlight"
+      update: (event, ui) ->
+        console.log(ui)
+        console.log(ui.item)
+        url = ui.item.data('sort-url')
+        console.log(url)
+        $.ajax({
+                  url: url,
+                  type: 'post',
+                  data: { position: ui.item.index() + 1 },
+                  success: ->
+                    window.location.reload()
+        })
+    })
+  )
+  #$('#sortable_0').sortable({placeholder: "ui-state-highlight"})
+
 )

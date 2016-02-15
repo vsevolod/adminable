@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'ancestry'
   s.add_dependency 'paperclip'
   s.add_dependency 'paperclip-ffmpeg'
+  s.add_dependency 'acts_as_list'
   s.add_dependency 'pg'
   #s.add_dependency 'activeadmin'
   #s.add_dependency 'active_admin-sortable_tree'

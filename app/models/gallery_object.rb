@@ -1,6 +1,8 @@
 class GalleryObject < ActiveRecord::Base
   belongs_to :gallery
 
+  acts_as_list scope: :gallery
+
   #mount_uploader :photo, PhotoImageUploader, mount_on: :photo_image_filename
   has_attached_file :photo, :styles => { :medium => "300x300>",
                                          :thumb => "100x100>",
@@ -41,6 +43,12 @@ class GalleryObject < ActiveRecord::Base
   path: "public/system/videos/videos/:style/:filename",
   url: "/system/videos/videos/:style/:basename.:extension",
   processors: [:ffmpeg, :qtfaststart], max_size: 350.megabytes
+
+  #before_create :update_position
+
+  #def update_position
+  #  self.position ||= self.gallery.gallery_objects.maximum(:position).to_i + 1
+  #end
 
   def object
     self.video.present? ? self.video : self.photo

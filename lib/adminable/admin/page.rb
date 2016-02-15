@@ -24,15 +24,19 @@ ActiveAdmin.register Page do
     end
     div do
       h2 "Галереи"
-      ul do
-        page.galleries.each do |g|
-          li do
-            g.gallery_objects.each do |go|
-              unless go.photo.blank?
-                span link_to(image_tag(go.photo.url(:thumb)), go.photo.url, {target: '_blank'})
-              end
-              unless go.video.blank?
-                span link_to(image_tag(go.video.url(:thumb)), go.video.url, {target: '_blank'})
+      div do
+        page.galleries.each_with_index do |g, index|
+          span do
+            h3(g.name.present? ? g.name : 'Без названия')
+            ul id: "sortable_#{index}", class: 'sortable' do
+              g.gallery_objects.each do |go|
+                options = {class: 'ui-state-default', 'data-sortable-url' => true, 'data-sort-url' => "/admin/gallery_objects/#{go.id}/sort"}
+                unless go.photo.blank?
+                  li link_to(image_tag(go.photo.url(:thumb)), go.photo.url, {target: '_blank'}), options
+                end
+                unless go.video.blank?
+                  li link_to(image_tag(go.video.url(:thumb)), go.video.url, {target: '_blank'}), options
+                end
               end
             end
           end
