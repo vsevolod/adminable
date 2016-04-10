@@ -11,6 +11,7 @@ class Category < ActiveRecord::Base
   add_columns
   add_store_accessor
 
+  Item rescue nil
   if ActiveRecord::Base.connection.table_exists?('items') && defined?(Item)
     has_many :items
   end

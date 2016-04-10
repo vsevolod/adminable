@@ -37,6 +37,7 @@ PATH
   remote: .
   specs:
     adminable (0.0.1)
+      acts_as_list
       ancestry
       draper
       paperclip
@@ -86,6 +87,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    acts_as_list (0.7.2)
+      activerecord (>= 3.0)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     arbre (1.0.3)
@@ -236,6 +239,7 @@ DEPENDENCIES
   activeadmin!
   activeadmin-dragonfly!
   activeadmin-wysihtml5!
+  acts_as_list
   adminable!
   ancestry
   draper

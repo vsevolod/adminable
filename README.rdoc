@@ -6,6 +6,7 @@
   gem 'active_admin-sortable_tree'
   gem 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
   gem 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
+  gem 'ancestry'
 
 * add routes to config/routes.rb:
   ActiveAdmin.routes(self)
