@@ -17,7 +17,9 @@ class GalleryObject < ActiveRecord::Base
                                          :carousel_gallery => "640x360#",
                                          :photo_large => "800x600>",
                                          :gallery => "376x288#",
-                                         :gallery_list => "x567"
+                                         :gallery_list => "x567",
+                                         :rs_img_small => "96x72#",
+                                         :rs_img_big => "540x372#"
                                        },
                             :convert_options => { :thumb => "-quality 75 -strip" }
   validates_attachment_content_type :photo, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
