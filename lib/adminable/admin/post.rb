@@ -11,6 +11,9 @@ ActiveAdmin.register Post do
       end
     end
     column :id
+    column 'Тэги' do |p|
+      content_tag :span, p.tag_list
+    end
     column :title
     column :available
     column :published_at
@@ -62,6 +65,12 @@ ActiveAdmin.register Post do
       f.input :content, as: :wysihtml5
       f.input :published_at
     end
+    f.inputs 'Тэги' do
+      tags = ActsAsTaggableOn::Tag.order(:name).map{|x| [x.name, x.id]}
+      tags.each_slice((tags.size/3).ceil + 1) do |sub_tags|
+        f.input :tag_ids, as: :check_boxes, collection: sub_tags, label: false, input_html: {style: 'float:left;'}
+      end
+    end
     f.inputs 'Дополнительно' do
       show_fields_for(f)
     end
@@ -86,6 +95,7 @@ ActiveAdmin.register Post do
 
     def update
       @post = Post.find(params[:id])
+      params[:post][:tag_list] = ActsAsTaggableOn::Tag.where(id: params[:post][:tag_ids]).pluck(:name).join(', ')
       if @post.update_attributes(permitted_params)
         redirect_to [:admin, @post]
       else
@@ -94,7 +104,7 @@ ActiveAdmin.register Post do
     end
 
     def permitted_params
-      (params.permit(post: [:available, :title, :content, :published_at,
+      (params.permit(post: [:tag_list, :available, :title, :content, :published_at,
         galleries_attributes: [
           :_destroy,
           :name,

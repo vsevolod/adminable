@@ -1,6 +1,11 @@
 ru:
   activerecord:
     models:
+      acts_as_taggable_on/tag:
+        one: Тэг
+        few: Тэги
+        many: Тэги
+        other: Тэги
       banner:
         one: Баннер
         few: Баннеры
@@ -109,6 +114,8 @@ ru:
         parent: Предок
         parent_id: Предок
         galleries: Галереи
+      acts_as_taggable_on/tag:
+        name: Название
 
   time:
     formats:

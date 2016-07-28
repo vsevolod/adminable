@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
 
   scope :available, ->{ where(available: true) }
 
+  acts_as_taggable
+
   def to_param
     if self.title
       "#{self.id}-#{Russian.translit(self.title).gsub(/\W/, '_')}"
