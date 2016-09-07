@@ -45,6 +45,7 @@ class GalleryObject < ActiveRecord::Base
   path: "public/system/videos/videos/:style/:filename",
   url: "/system/videos/videos/:style/:basename.:extension",
   processors: [:ffmpeg, :qtfaststart], max_size: 350.megabytes
+  process_in_background :video, only_process: [:original]
 
   #before_create :update_position
 

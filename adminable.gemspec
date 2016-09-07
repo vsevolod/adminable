@@ -25,6 +25,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'acts_as_list'
   s.add_dependency 'acts-as-taggable-on'
   s.add_dependency 'pg'
+  s.add_dependency 'delayed_paperclip'
+  s.add_dependency 'resque'
   #s.add_dependency 'activeadmin'
   #s.add_dependency 'active_admin-sortable_tree'
   #s.add_dependency 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'

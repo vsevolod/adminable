@@ -4,7 +4,7 @@ ActiveAdmin.register Post do
 
   index do
     column '' do |p|
-      if p.is_a_project
+      if p.respond_to?(:is_a_project) && p.is_a_project
         content_tag :span, 'Проект', class: 'status_tag yes'
       else
         content_tag :span, 'Статья', class: 'status_tag no'

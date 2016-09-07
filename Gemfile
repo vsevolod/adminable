@@ -12,6 +12,8 @@ gem 'draper'
 gem 'ancestry'
 gem 'paperclip'
 gem 'paperclip-ffmpeg'
+gem 'delayed_paperclip'
+gem 'resque'
 
 gem 'pg'
 gem 'pry'

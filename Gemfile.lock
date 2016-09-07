@@ -40,6 +40,7 @@ PATH
       acts-as-taggable-on
       acts_as_list
       ancestry
+      delayed_paperclip
       draper
       paperclip
       paperclip-ffmpeg
@@ -113,6 +114,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    delayed_paperclip (3.0.1)
+      activejob (>= 4.2)
+      paperclip (>= 3.3)
     dragonfly (0.9.15)
       multi_json (~> 1.0)
       rack
@@ -246,6 +250,7 @@ DEPENDENCIES
   acts_as_list
   adminable!
   ancestry
+  delayed_paperclip
   draper
   paperclip
   paperclip-ffmpeg
