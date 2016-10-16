@@ -1,3 +1,12 @@
+Gem.loaded_specs['adminable'].dependencies.each do |d|
+  case d.name
+  when 'active_admin-sortable_tree'
+    require 'active_admin/sortable_tree'
+  else
+    require d.name
+  end
+end
+
 module Adminable
   class Engine < ::Rails::Engine
     engine_name 'admin'

@@ -42,6 +42,7 @@ class GalleryObject < ActiveRecord::Base
     #gallery: {format: 'jpg', geometry: "376x288#", time: 10},
     #gallery_list: {format: 'jpg', geometry: "x567", time: 10}
   },
+  storage: :filesystem,
   path: "public/system/videos/videos/:style/:filename",
   url: "/system/videos/videos/:style/:basename.:extension",
   processors: [:ffmpeg, :qtfaststart], max_size: 350.megabytes
