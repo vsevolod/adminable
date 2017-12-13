@@ -33,7 +33,7 @@ module ActiveAdmin::DictionaryHelper
           validation_class = " "
           #validation_class << 'validate[required] ' if field.required
           if field.methods.include?(:select_tag) && field.select_tag.present?
-            f.input "#{field.value}_id", as: :select, collection: field.get_collection, label: field.name, input_html: {class: validation_class}
+            f.input field.value, as: :select, collection: field.get_collection, label: field.name, input_html: {class: validation_class}
           elsif field.methods.include?(:select_tag_array) && field.select_tag_array.present?
             f.input "#{field.value}_ids", as: :select, collection: field.get_collection, label: field.name, input_html: {multiple: 'multiple', class: 'select2' + validation_class}
           else
