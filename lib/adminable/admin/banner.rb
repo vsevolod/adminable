@@ -1,6 +1,7 @@
 ActiveAdmin.register Banner do
 
   sortable tree: true
+  config.filters = false
 
   index do
     column :id
@@ -58,6 +59,9 @@ ActiveAdmin.register Banner do
   end
 
   controller do
+    def index
+      @banners = Banner.order(created_at: :desc).page(params[:page]).per(10)
+    end
 
     def new
       @banner = Banner.new(permitted_params)

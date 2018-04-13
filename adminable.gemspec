@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'simple_form'
 
   #s.add_dependency 'activeadmin'
-  s.add_dependency 'active_admin-sortable_tree'
+  s.add_dependency 'active_admin-sortable_tree', '0.3.0'
   #s.add_dependency 'activeadmin-dragonfly', github: 'stefanoverna/activeadmin-dragonfly'
   #s.add_dependency 'activeadmin-wysihtml5', github: 'stefanoverna/activeadmin-wysihtml5'
 
