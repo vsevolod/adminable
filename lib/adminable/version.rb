@@ -1,3 +1,3 @@
 module Adminable
-  VERSION = "1.0.0.beta1"
+  VERSION = "0.0.1"
 end

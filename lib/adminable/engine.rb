@@ -9,7 +9,7 @@ end
 
 module Adminable
   class Engine < ::Rails::Engine
-    engine_name 'adminable'
+    engine_name 'admin'
     config.autoload_paths += %W(#{config.root}/lib)
     config.i18n.default_locale = :ru
     config.active_record.raise_in_transactional_callbacks = true
